@@ -1,35 +1,34 @@
 let playerWins = 0, compWins = 0;
 
 function computerPlay(){
-    const compOptions = ['Rock', 'Paper','Sisscors'];
+    const compOptions = ['ROCK', 'PAPER','SISSCORS'];
     const choiceNum = Math.floor(Math.random() * 3);
     return compOptions[choiceNum];
 }
 
 function playRound(playerSelection, computerSelection){
-    const caseInPlayerSel = playerSelection.toUpperCase();
-    const caseInCompSel = computerSelection.toUpperCase();
-    if(caseInPlayerSel ===  caseInCompSel){
-       let result = 'Looks like you tied!';
-       return result;
-    }else if(caseInPlayerSel === 'ROCK'){
-        if(caseInCompSel === 'SISSCORS'){
+    //const caseInPlayerSel = playerSelection.toUpperCase();
+    //const caseInCompSel = computerSelection.toUpperCase();
+    if(playerSelection ===  computerSelection){
+        return 'Looks like you tied!';
+    }else if(playerSelection === 'ROCK'){
+        if(computerSelection === 'SISSCORS'){
             playerWins++;
             return 'You Win! Rock beats Sisscors';
         }else{
             compWins++;
-            return 'You lose! Paper beats Rocks';
+            return 'You lose! Paper beats Rock';
         }
-    }else if(caseInCompSel === 'PAPER'){
-        if(caseInCompSel === 'ROCK'){
+    }else if(playerSelection === 'PAPER'){
+        if(computerSelection === 'ROCK'){
             playerWins++;
             return 'You Win! Paper beats Rock';
         }else{
             compWins++;
             return 'You lose! Sisscors beats Paper';
         }
-    }else if(caseInCompSel === 'SISSCORS'){
-        if(caseInCompSel === 'PAPER'){
+    }else if(playerSelection === 'SISSCORS'){
+        if(computerSelection === 'PAPER'){
             playerWins++;
             return 'You win! Sisscors beats Paper';
         }else{
@@ -56,7 +55,7 @@ function game(){
 }
 
 function userInput(){
-    let choice = prompt('Choose between Rock Paper and Sisscor', '');
+    let choice = prompt('Choose between Rock Paper and Sisscors', '').toUpperCase();
     return choice;
 }
 //console.log(playRound(userInput(), computerPlay()));
