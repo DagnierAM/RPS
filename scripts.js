@@ -1,4 +1,7 @@
-let playerWins = 0, compWins = 0;
+let playerWins = 0, compWins = 0; let playerChoice;
+const para = document.querySelector('#results');
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
 
 function computerPlay(){
     const compOptions = ['ROCK', 'PAPER','SISSCORS'];
@@ -10,36 +13,36 @@ function playRound(playerSelection, computerSelection){
     //const caseInPlayerSel = playerSelection.toUpperCase();
     //const caseInCompSel = computerSelection.toUpperCase();
     if(playerSelection ===  computerSelection){
-        return 'Looks like you tied!';
+        para.textContent = 'Looks like you tied!';
     }else if(playerSelection === 'ROCK'){
         if(computerSelection === 'SISSCORS'){
-            playerWins++;
-            return 'You Win! Rock beats Sisscors';
+            playerScore.textContent = ++playerWins;
+            para.textContent = 'You Win! Rock beats Sisscors';
         }else{
-            compWins++;
-            return 'You lose! Paper beats Rock';
+            computerScore.textContent = ++compWins;
+            para.textContent = 'You lose! Paper beats Rock';
         }
     }else if(playerSelection === 'PAPER'){
         if(computerSelection === 'ROCK'){
-            playerWins++;
-            return 'You Win! Paper beats Rock';
+            playerScore.textContent = ++playerWins;
+            para.textContent = 'You Win! Paper beats Rock';
         }else{
-            compWins++;
-            return 'You lose! Sisscors beats Paper';
+            computerScore.textContent = ++compWins;
+            para.textContent = 'You lose! Sisscors beats Paper';
         }
     }else if(playerSelection === 'SISSCORS'){
         if(computerSelection === 'PAPER'){
-            playerWins++;
-            return 'You win! Sisscors beats Paper';
+            playerScore.textContent = ++playerWins;
+            para.textContent = 'You win! Sisscors beats Paper';
         }else{
-            compWins++;
-            return 'You lose! Rock beats Sisscors';
+            computerScore.textContent = ++compWins;
+            para.textContent = 'You lose! Rock beats Sisscors';
         }
     }
 }
 //console.log(playRound(playerSelection, computerSelection));
 
-function game(){
+/*function game(){
     for(let i = 0; i < 5; i++){
         console.log(playRound(userInput(), computerPlay()));
         console.log(`Score: User:${playerWins} - CPU:${compWins}`)
@@ -53,10 +56,26 @@ function game(){
         } 
     }
 }
+*/
 
-function userInput(){
-    let choice = prompt('Choose between Rock Paper and Sisscors', '').toUpperCase();
-    return choice;
+function userInput(e){
+    playerChoice = this.classList.value;
+    e.stopPropagation(); 
+    //images.classList.add('playing');
+    console.log(playRound(playerChoice, computerPlay()));
 }
+
 //console.log(playRound(userInput(), computerPlay()));
-game();
+//game();
+const images = document.querySelectorAll('img');
+images.forEach(img => img.addEventListener('transitionend', removeTransition));
+
+function removeTransition(e){
+    if(e.propertyName !== 'transform') return; // skip it if its not a transform
+    this.classList.remove('playing');
+}
+images.forEach(img => img.addEventListener('click', userInput, {
+    capture: false
+}));
+
+
