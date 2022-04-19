@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scripts.js"></script>
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>RPS</title>
 </head>
 <body>
-    <header>
-        <h1>Rock Paper Sisscors</h1>
-    </header>
-    <div class="header-text">
-        <h2>Welcome to a best of five gaming classic</h2>
-        <h3>Select one of the images below to commence</h3>
-    </div>
-    <div class="images">
-       <button type="submit"></button> 
-       <button type="submit"></button> 
-       <button type="submit"></button> 
+    <div class="container">
+        <header>
+            <h1>Rock Paper Sisscors</h1>
+        </header>
+        <div class="header-text">
+            <h2>Welcome to a best of five gaming classic</h2>
+            <h3>Select one of the images below to commence</h3>
+        </div>
+        <div class="images">
+            <img class="ROCK" src="https://cdn5.vectorstock.com/i/1000x1000/64/24/gray-rock-stone-on-a-black-background-vector-18756424.jpg" alt="Image of a rock with a black backround">
+            <img class="PAPER" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Paper_450x450.jpg" alt="Image of paper">
+            <img class="SISSCORS" src="https://media.istockphoto.com/photos/professional-scissors-on-black-background-picture-id1124646454?k=20&m=1124646454&s=170667a&w=0&h=HQmigpJ668ENNcvDjkh96Siuvyv8YkSYpDUqo_kPTOc=" alt="Image of a sisscor with a black backround">
+        
+        </div>
+        <div class="playerLabels">
+            <span id="playerLabel">Player Scores</span>
+            <span id="computerLabel">Computer Scores</span>
+        </div>
+        <div class="scores">
+            <div id="playerScore"></div>
+            <div id="computerScore"></div>
+        </div>
+        <div class="resultLabel">Results</div>
+        <div id="results"></div>
     </div>
 </body>
 </html>
