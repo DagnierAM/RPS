@@ -41,6 +41,7 @@ function playRound(playerSelection, computerSelection){
             results.textContent = 'You lose! Rock beats Sisscors';
         }
     }
+    checkWinner();
 }
 
 function userInput(e){
@@ -56,14 +57,22 @@ function removeTransition(e){
     this.classList.remove('playing');
 }
 
-images.forEach(img => img.addEventListener('click', userInput, {
-    capture: false
-}));
+images.forEach(img => img.addEventListener('click', userInput));
 
 button.addEventListener('click', () => {
     window.location.reload();
     return false;
 });
+
+function checkWinner(){
+    if(playerWins === 5){
+        results.textContent = 'Congratulations You\'ve Won!';
+        images.forEach(img => img.removeEventListener('click', userInput));
+    }else if(compWins === 5){
+        results.textContent = 'Bummer! You\'ve Lost to a Machine!';
+        images.forEach(img => img.removeEventListener('click', userInput));
+    }
+}
 
 
 
