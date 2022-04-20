@@ -61,7 +61,7 @@ img:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 75px;
+    gap: 55px;
     padding: 10px;
     font-size: large;
 }
@@ -93,4 +93,16 @@ margin-top: 20px;
     width: 100px;
     height: 30px;
     text-align: center;
+}
+button{
+    margin: 50px;
+    background-color: cyan;
+    border: 5px solid rgb(27, 27, 31);
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    font-family: cursive;
+}
+button:hover{
+    cursor: pointer;
 }
